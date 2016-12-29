@@ -1,35 +1,34 @@
 $(document).ready(function() {
  	setTimeout(function(){
 		$('.preloader-container').hide();
-		$('.content').show();
-
-		$(window).scroll(function() {    
-			var scroll = $(window).scrollTop();
-
-			if (scroll >= 569) {
-				$(".navbar").addClass("navbar-fixed-top dark-bar");
-			} else {
-				$(".navbar").removeClass("navbar-fixed-top dark-bar");
-			}
-		});
+		$('.content-wrap').show();
 	 }, 4000);
 
+	$(window).scroll(function() {    
+		var scroll = $(window).scrollTop();
+
+		if (scroll >= 569) {
+			$(".js-top-navnbar").addClass("navbar-fixed-top dark-bar");
+		} else {
+			$(".js-top-navnbar").removeClass("navbar-fixed-top dark-bar");
+		}
+	});
 
 	// Smooth Scroll
-		$('a[href*="#"]:not([href="#"])').click(function() {
-		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-		        || location.hostname == this.hostname) {
+	$('a[href*="#"]:not([href="#"])').click(function() {
+		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			|| location.hostname == this.hostname) {
 
-		        var target = $(this.hash);
-		        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-		           if (target.length) {
-		             $('html,body').animate({
-		                 scrollTop: (target.offset().top - 452)
-		            }, 1000);
-		            return false;
-		        }
-		    }
-		});
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				if (target.length) {
+					$('html,body').animate({
+						scrollTop: (target.offset().top - 452)
+				}, 1000);
+				return false;
+			}
+		}
+	});
 
 
  	// Popup
@@ -45,7 +44,6 @@ $(document).ready(function() {
 
 
  	// Slider
-
  	$('#workstation-slider').owlCarousel({
 	    loop:true,
 	    margin:30,
@@ -61,6 +59,7 @@ $(document).ready(function() {
 	        }
 	    }
 	})
+
 	$('#expert-slider').owlCarousel({
 	    loop:true,
 	    items: 1
@@ -74,17 +73,8 @@ $(document).ready(function() {
 	});
 
  	// Menu bar
-	$( ".menu" ).click(function() {
-		$(this).toggleClass('m c');
-		$('.menu span').toggleClass('ion-navicon ion-android-close');
-		$('#menu-item').toggleClass( "show-menu hide-menu" );
+	$( ".hamburger svg" ).click(function() {
+		$(this).parent().toggleClass('cross');
+		$('body').toggleClass("show-menu");
 	});
-
-	$( "#menu-item a" ).click(function() {
-		$('.menu').toggleClass('c m');
-		$('.menu span').toggleClass('ion-navicon ion-android-close');
-		$('#menu-item').toggleClass( "show-menu hide-menu" );
-	});
-
-
 });
